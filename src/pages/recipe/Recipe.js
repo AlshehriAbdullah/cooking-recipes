@@ -20,16 +20,16 @@ export default function Recipe() {
   }, [error, history])
 
   return (
-    <div>
+    <div className='recipe'>
         {error && <p className="error">{error}</p>}
       {isPending && <p className="loading">Loading...</p>}
         {recipe && (
-          <div>
-            <h2>{recipe.title}</h2>
-            <p>{recipe.cookingTime} To cook</p>
-            <p>{recipe.ingredients}</p>
-            <p>{recipe.method}</p>
-          </div>
+          <>
+            <h2 className='page-title'>{recipe.title}</h2>
+            <p>Takes {recipe.cookingTime} to cook</p>
+            <ul>{recipe.ingredients.map(ing => <li key={ing}>{ing}</li>)}</ul>
+            <p className='method'>{recipe.method}</p>
+          </>
         )}
     </div>
   )
